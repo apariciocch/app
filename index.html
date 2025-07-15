@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="/manifest.json">
 </head>
 <body>
     <form id="info-form">
@@ -267,7 +268,7 @@
                     <tr data-area="S">
                         <td>S (Social-asistencial)</td>
                         <td class="puntaje-c"></td>
-                    </tr>
+                   </tr>
                     <tr data-area="E">
                         <td>E (Empresarial-persuasivo)</td>
                         <td class="puntaje-c"></td>
@@ -292,5 +293,10 @@
     <script src="main.js"></script>
     <script src="sugerencias.js"></script>
     <script src="descargar.js"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker.register('/sw.js');
+      }
+    </script>
 </body>
 </html>
