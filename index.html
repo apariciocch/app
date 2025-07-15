@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <form id="info-form">
+        <h1>Formulario</h1>
+        <div class="form-group">
+            <label for="nombre">Nombre completo:</label>
+            <input type="text" id="nombre" name="nombre" required>
+        </div>
+        <div class="form-group">
+            <label for="centro">Centro/ grupo:</label>
+            <input type="text" id="centro" name="centro">
+        </div>
+        <div class="form-group">
+            <label for="fecha">Fecha:</label>
+            <input type="date" id="fecha" name="fecha">
+        </div>
+        <div class="form-group">
+            <label for="dni">DNI:</label>
+            <input type="text" id="dni" name="dni">
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad:</label>
+            <input type="number" id="edad" name="edad" min="0" required>
+        </div>
+        <div class="form-group">
+            <label>Sexo:</label>
+            <label><input type="radio" name="sexo" value="varon" required> Varón</label>
+            <label><input type="radio" name="sexo" value="mujer" required> Mujer</label>
+        </div>
+        <div id="adulto" class="hidden">
+            <h2>Si eres MAYOR de 18 años, indica tu:</h2>
+            <div class="form-group">
+                <label>Situación laboral</label>
+                <label><input type="radio" name="situacion" value="hogar"> Labores del hogar</label>
+                <label><input type="radio" name="situacion" value="ocupado"> Ocupado</label>
+                <label><input type="radio" name="situacion" value="parado"> Parado</label>
+                <label><input type="radio" name="situacion" value="estudiante"> Estudiante</label>
+                <label><input type="radio" name="situacion" value="otros"> Otros</label>
+            </div>
+            <div class="form-group">
+                <label>Nivel de estudios</label>
+                <label><input type="radio" name="estudios" value="sin"> Sin estudios</label>
+                <label><input type="radio" name="estudios" value="primarios"> Primarios</label>
+                <label><input type="radio" name="estudios" value="secundarios"> Secundarios</label>
+                <label><input type="radio" name="estudios" value="superiores"> Superiores</label>
+            </div>
+        </div>
+        <div id="menor" class="hidden">
+            <h2>Si eres MENOR de 18 años, indica el NIVEL DE ESTUDIOS de tu:</h2>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>PADRE</th>
+                    <th>MADRE</th>
+                </tr>
+                <tr>
+                    <td>Sin estudios</td>
+                    <td><input type="radio" name="padre" value="sin"></td>
+                    <td><input type="radio" name="madre" value="sin"></td>
+                </tr>
+                <tr>
+                    <td>Primarios</td>
+                    <td><input type="radio" name="padre" value="primarios"></td>
+                    <td><input type="radio" name="madre" value="primarios"></td>
+                </tr>
+                <tr>
+                    <td>Secundarios</td>
+                    <td><input type="radio" name="padre" value="secundarios"></td>
+                    <td><input type="radio" name="madre" value="secundarios"></td>
+                </tr>
+                <tr>
+                    <td>Superiores</td>
+                    <td><input type="radio" name="padre" value="superiores"></td>
+                    <td><input type="radio" name="madre" value="superiores"></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="profesiones">
+            <h3>PREFERENCIAS PROFESIONALES</h3>
+            <p>Indica hasta <strong>5 PROFESIONES</strong> que te interesen y en las que te gustaría trabajar alg&uacute;n d&iacute;a (col&oacute;calas por orden, desde la que m&aacute;s te interese a la que menos).</p>
+            <ol>
+                <li><input type="text" name="profesion1"></li>
+                <li><input type="text" name="profesion2"></li>
+                <li><input type="text" name="profesion3"></li>
+                <li><input type="text" name="profesion4"></li>
+                <li><input type="text" name="profesion5"></li>
+            </ol>
+        </div>
+
+        <div id="apartado1" style="margin-top:20px;">
+            <h2>APARTADO 1: INTERESES POR ACTIVIDADES Y PROFESIONES</h2>
+            <p>Me gustaría…</p>
+            <p class="leyenda">(S) Sí : si te gustaría o crees tener esa habilidad. (?) ¿ : si tienes dudas o no puedes decidirte. (N) No : si no te gustaría o no crees tener esa habilidad.</p>
+        </div>
+        <div id="apartado2" style="margin-top:20px;">
+            <h2>APARTADO 2: HABILIDADES Y DESTREZAS</h2>
+            <p>Creo que tendría habilidad o aptitudes para…</p>
+            <p class="leyenda">(S) Sí : si crees tener esa habilidad. (?) ¿ : si tienes dudas. (N) No : si no crees tenerla.</p>
+        </div>
+        <div id="apartado3" style="margin-top:20px;">
+            <h2>APARTADO 3: CARACTERÍSTICAS PERSONALES</h2>
+            <p>Me considero una persona…</p>
+            <p class="leyenda">(S) Sí : si te identificas con la afirmación. (?) ¿ : si tienes dudas. (N) No : si no te identificas.</p>
+        </div>
+
+        <div id="resultados" style="margin-top:30px;">
+            <h2>Resultados</h2>
+            <button type="button" id="calcular">Calcular resultados</button>
+
+        <div id="res-actividades" class="bloque-resultado hidden">
+            <h3>INTERESES POR ACTIVIDADES</h3>
+            <table id="tabla-actividades" style="width:100%;" class="tabla-bloque">
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-area="T"><td>T (Técnico-manual)</td><td class="puntaje-act"></td></tr>
+                        <tr data-area="C"><td>C (Científico-investigador)</td><td class="puntaje-act"></td></tr>
+                        <tr data-area="A"><td>A (Artístico-creativo)</td><td class="puntaje-act"></td></tr>
+                        <tr data-area="S"><td>S (Social-asistencial)</td><td class="puntaje-act"></td></tr>
+                        <tr data-area="E"><td>E (Empresarial-persuasivo)</td><td class="puntaje-act"></td></tr>
+                        <tr data-area="O"><td>O (Oficina-administración)</td><td class="puntaje-act"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <div id="res-profesiones" class="bloque-resultado hidden" style="margin-top:20px;">
+            <h3>INTERESES POR PROFESIONES</h3>
+            <table id="tabla-profesiones" style="width:100%;" class="tabla-bloque">
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-area="T"><td>T (Técnico-manual)</td><td class="puntaje-prof"></td></tr>
+                        <tr data-area="C"><td>C (Científico-investigador)</td><td class="puntaje-prof"></td></tr>
+                        <tr data-area="A"><td>A (Artístico-creativo)</td><td class="puntaje-prof"></td></tr>
+                        <tr data-area="S"><td>S (Social-asistencial)</td><td class="puntaje-prof"></td></tr>
+                        <tr data-area="E"><td>E (Empresarial-persuasivo)</td><td class="puntaje-prof"></td></tr>
+                        <tr data-area="O"><td>O (Oficina-administración)</td><td class="puntaje-prof"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+
+        <div id="res-habilidades" class="bloque-resultado hidden" style="margin-top:20px;">
+            <h3>HABILIDADES Y DESTREZAS</h3>
+            <table id="tabla-habilidades" style="width:100%;" class="tabla-bloque">
+                    <thead>
+                        <tr>
+                            <th>Área</th>
+                            <th>Puntaje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr data-area="T"><td>T (Técnico-manual)</td><td class="puntaje-hab"></td></tr>
+                        <tr data-area="C"><td>C (Científico-investigador)</td><td class="puntaje-hab"></td></tr>
+                        <tr data-area="A"><td>A (Artístico-creativo)</td><td class="puntaje-hab"></td></tr>
+                        <tr data-area="S"><td>S (Social-asistencial)</td><td class="puntaje-hab"></td></tr>
+                        <tr data-area="E"><td>E (Empresarial-persuasivo)</td><td class="puntaje-hab"></td></tr>
+                        <tr data-area="O"><td>O (Oficina-administración)</td><td class="puntaje-hab"></td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <table id="resultado-tabla" class="hidden" style="margin-top:15px; width:100%;">
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th class="hide-col">Ítems Interés (12)</th>
+                        <th>Puntaje I (/24)</th>
+                        <th class="hide-col">Ítems Habilidad (8–9)</th>
+                        <th>Puntaje H (/18)</th>
+                        <th>Total (/42)</th>
+                        <th>Coincidencia</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-intereses="1,7,13,19,31,37,43,49,55,61,73,85" data-habilidades="109,115,127,133,139,145,151,157">
+                        <td>T (Técnico-manual)</td>
+                        <td class="lista-interes hide-col">1, 7, 13, 19, 31, 37, 43, 49, 55, 61, 73, 85</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">109, 115, 127, 133, 139, 145, 151, 157</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                    <tr data-intereses="2,8,26,32,38,44,50,62,68,74,80,86" data-habilidades="110,116,122,128,134,140,146,152">
+                        <td>C (Científico-investigador)</td>
+                        <td class="lista-interes hide-col">2, 8, 26, 32, 38, 44, 50, 62, 68, 74, 80, 86</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">110, 116, 122, 128, 134, 140, 146, 152</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                    <tr data-intereses="3,9,15,27,33,39,45,57,63,69,75,81" data-habilidades="111,117,123,129,135,141,147,153,159">
+                        <td>A (Artístico-creativo)</td>
+                        <td class="lista-interes hide-col">3, 9, 15, 27, 33, 39, 45, 57, 63, 69, 75, 81</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">111, 117, 123, 129, 135, 141, 147, 153, 159</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                    <tr data-intereses="4,10,16,22,28,34,40,46,52,58,64,70" data-habilidades="112,118,124,130,136,142,148,154,160">
+                        <td>S (Social-asistencial)</td>
+                        <td class="lista-interes hide-col">4, 10, 16, 22, 28, 34, 40, 46, 52, 58, 64, 70</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">112, 118, 124, 130, 136, 142, 148, 154, 160</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                    <tr data-intereses="5,11,17,23,29,35,41,47,53,59,65,71" data-habilidades="113,119,125,131,137,143,149,155,161">
+                        <td>E (Empresarial-persuasivo)</td>
+                        <td class="lista-interes hide-col">5, 11, 17, 23, 29, 35, 41, 47, 53, 59, 65, 71</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">113, 119, 125, 131, 137, 143, 149, 155, 161</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                    <tr data-intereses="6,12,18,24,30,36,42,48,54,60,66,72" data-habilidades="114,120,126,132,138,144,150,156,162">
+                        <td>O (Oficina-administración)</td>
+                        <td class="lista-interes hide-col">6, 12, 18, 24, 30, 36, 42, 48, 54, 60, 66, 72</td>
+                        <td class="puntaje-i"></td>
+                        <td class="lista-habilidad hide-col">114, 120, 126, 132, 138, 144, 150, 156, 162</td>
+                        <td class="puntaje-h"></td>
+                        <td class="total"></td>
+                        <td class="coincidencia"></td>
+                    </tr>
+                </tbody>
+            </table>
+            <h3 class="hidden">Resultados – Características personales</h3>
+            <table id="caracteristicas-tabla" class="hidden" style="margin-top:15px; width:100%;">
+                <thead>
+                    <tr>
+                        <th>Área</th>
+                        <th>Puntaje C</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-area="T">
+                        <td>T (Técnico-manual)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                    <tr data-area="C">
+                        <td>C (Científico-investigador)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                    <tr data-area="A">
+                        <td>A (Artístico-creativo)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                    <tr data-area="S">
+                        <td>S (Social-asistencial)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                    <tr data-area="E">
+                        <td>E (Empresarial-persuasivo)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                    <tr data-area="O">
+                        <td>O (Oficina-administración)</td>
+                        <td class="puntaje-c"></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div id="perfil-profesional" class="seccion" style="margin-top:20px;">
+                <h3>Perfil Profesional Específico</h3>
+                <div id="grafica"></div>
+            </div>
+
+        </div>
+    </form>
+    <h2>Sugerencias de Profesiones Según tu Perfil</h2>
+    <div id="sugerencias"></div>
+    <button type="button" id="descargar-informe">Descargar informe (Word)</button>
+    <script src="main.js"></script>
+    <script src="sugerencias.js"></script>
+    <script src="descargar.js"></script>
+</body>
+</html>

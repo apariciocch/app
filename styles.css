@@ -1,0 +1,190 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background: linear-gradient(to bottom, #ffe8ec, #e6f0ff);
+    color: #002d62;
+    margin: 0;
+    padding: 20px;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="date"],
+input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    box-sizing: border-box;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Hide table columns when necessary */
+.hide-col {
+    display: none;
+}
+
+h1, h2, h3 {
+    text-align: left;
+    margin-top: 20px;
+    color: #0b3d91;
+}
+
+h2 {
+    color: #0b3d91;
+}
+
+th, td {
+    padding: 5px 10px;
+}
+
+.pregunta label {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.radio-option span {
+    margin-left: 3px;
+}
+
+.radio-option input:checked + span {
+    color: green;
+    font-weight: bold;
+}
+
+/* Preselected option appears in red until usuario la seleccione */
+.radio-option input.preselected:checked + span.preselected {
+    color: red;
+    font-weight: normal;
+}
+
+#profesiones {
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+#profesiones h3 {
+    margin-top: 0;
+    color: #333;
+}
+
+#profesiones input[type="text"] {
+    width: 100%;
+}
+
+.leyenda {
+    font-size: 0.9em;
+    color: #555;
+}
+
+/* Organizar las preguntas en dos columnas */
+#apartado1,
+#apartado2,
+#apartado3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px 20px;
+}
+
+
+.pregunta {
+    background: #fff7fb;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.pregunta p {
+    margin: 0 0 5px 0;
+}
+
+/* Estilos para los bloques de resultados por área */
+.bloque-resultado {
+    margin-top: 15px;
+}
+.tabla-bloque {
+    border-collapse: collapse;
+    width: 100%;
+}
+.tabla-bloque th,
+.tabla-bloque td {
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+}
+
+/* Gráfica de perfil profesional */
+.seccion {
+    margin-top: 30px;
+}
+
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.tabla th,
+.tabla td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: center;
+}
+
+.barra {
+    height: 25px;
+    background: linear-gradient(to right,
+        #dbeafe 0%,    /* Muy bajo */
+        #bfdbfe 20%,   /* Bajo */
+        #bbf7d0 40%,   /* Medio */
+        #fde68a 60%,   /* Alto */
+        #fecaca 80%,   /* Muy alto */
+        #fecaca 100%);
+    position: relative;
+}
+
+.barra-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8em;
+    margin-top: 2px;
+}
+
+.punto {
+    position: absolute;
+    top: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    border-radius: 50%;
+}
+
+#calcular,
+#descargar-informe {
+    background-color: #b7e4c7; /* pastel green */
+    color: #000;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#calcular:hover,
+#descargar-informe:hover {
+    background-color: #a3d9b1;
+}
